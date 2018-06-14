@@ -1,17 +1,15 @@
 }}<template>
   <div class="hello">
     <div class="holder">
+      <form @submit.prevent="addTasks">
+        <input type="text" placeholder="Enter new task...." v-model="task">
+      </form>
       <ul>
-        <li v-for="(data, index) in skills" :key='index'> {{ index }}. {{ data.skill }} </li>
+        <li v-for="(data, index) in tasks" :key='index'> {{ index }}. {{ data.task }} </li>
       </ul>
 
-      <p>this are the tasks</p>
+      <p>this are the tasks</p> 
 
-
-      <!--<p v-if="skills.lenght < 3">good</p>
-      <p v-else>not good</p>-->
-
-      <!-- <div v-bind:class="{ alert: showAlert }"></div>-->
     </div>
   </div>
 </template>
@@ -21,13 +19,20 @@ export default {
   name: 'todo',
   data() {
     return {
-      skills: [
-        { 'skill': 'Finish Perfecting your Laravel Skills'},
-        { 'skill': 'Perfect Your Vue.js Skills'},
-        { 'skill': 'Perfect Codeigniter'},
-        { 'skill': 'Learn Python To Begin Machine-Learning'}
+      task: "",
+      tasks: [
+        { 'task': 'Finish Perfecting your Laravel Skills'},
+        { 'task': 'Perfect Your Vue.js Skills'},
+        { 'task': 'Perfect Codeigniter'},
+        { 'task': 'Learn Python To Begin Machine-Learning'}
       ],
       showAlert: true
+    }
+  },
+  methods: {
+    addTasks() {
+    this.tasks.push({task: this.task})
+    this.task= '';
     }
   }
 }
@@ -62,5 +67,14 @@ p {
 
 .container {
   box-shadow: 0px 0px 40px lightgray;
+}
+
+input {
+  width: calc(100% - 40px);
+  border: 0;
+  padding: 20px;
+  font-size: 1.3em;
+  background-color: #323333;
+  color: #687f7f;
 }
 </style>
