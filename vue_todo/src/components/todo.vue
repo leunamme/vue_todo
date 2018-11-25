@@ -1,5 +1,6 @@
-}}<template>
+<template>
   <div class="hello">
+    
     <div class="holder">
       <form @submit.prevent="addTasks">
         <input type="text" placeholder="Enter new task...." v-model="task">
